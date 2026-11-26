@@ -18,6 +18,6 @@ description: Put the current repo on the astra-build workflow (Opus specs and re
    lands, and commits carry `Codex-Job:`. If AGENTS.md exists, add a line for Codex: it works in its own worktree
    from a written spec, doesn't commit, and stays inside the files the spec names.
 5. If init reported that the repo commits its own hooks folder (`core.hooksPath` inside the work tree), add the
-   Codex-Job check to that folder's `commit-msg` instead; `scripts/commit-msg.mjs` shows the logic.
+   Codex-Job check to that folder's `commit-msg` instead; `scripts/commit-msg.cjs` shows the logic.
 6. Report what was written, what Codex looks like (version, login), and anything left for the user. Commit the
    config and instructions only if the repo's instructions say to commit without asking; otherwise ask.
