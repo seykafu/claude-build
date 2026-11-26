@@ -1,0 +1,24 @@
+{
+  "model": "gpt-6.2-astra",
+  "minCodexCli": "0.169.0",
+  "code": [
+    "**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs,py,rb,go,rs,java,kt,kts,swift,c,h,cc,cpp,hpp,cs,php,sh,bash,zsh,css,scss,sass,less,html,vue,svelte,sql}"
+  ],
+  "notCode": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.venv/**",
+    "**/vendor/**",
+    ".claude/**"
+  ],
+  "checks": [
+    "node --test plugins/astra-build/tests/*.test.mjs",
+    "for f in plugins/astra-build/scripts/*.sh; do /bin/bash -n \"$f\" || exit 1; done"
+  ],
+  "worktree": {
+    "base": "main",
+    "setup": []
+  },
+  "land": "push"
+}

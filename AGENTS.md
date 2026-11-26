@@ -21,3 +21,8 @@ and hook: read it before changing anything.
   what you changed and what you verified.
 - **Do not commit or push.** The orchestrator reviews and commits.
 - Stay inside the files the task names. If the change seems to need another file, stop and say so in the report.
+
+## This repo uses its own workflow
+`.claude/build.json` puts this repo on astra-build: GPT-6.2 Astra writes the code (scripts, hooks, tests) from a
+spec in its own worktree; Opus writes the README, skills, manifests and specs, runs the checks, reviews, and lands
+with a `Codex-Job:` trailer.
