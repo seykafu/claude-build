@@ -1,0 +1,8 @@
+{
+  "name": "astra-build",
+  "version": "0.1.0",
+  "description": "Opus scopes, specs, checks and reviews; GPT-6.2 Astra writes all code through Codex, one worktree per task. A guard keeps Opus off code files and a commit hook requires a Codex-Job trailer.",
+  "author": {
+    "name": "Kasey"
+  }
+}
