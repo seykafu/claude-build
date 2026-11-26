@@ -89,11 +89,14 @@ when there's no `origin`.
 ## The commit hook
 
 Installed into the clone's effective hooks folder (`git rev-parse --git-path hooks`, which follows
-`core.hooksPath`) as `commit-msg`, stamped with the plugin version. An existing `commit-msg` that isn't ours is
-renamed `commit-msg.pre-astra-build` and still runs first. When `core.hooksPath` points inside the work tree (a
-committed hooks folder), the installer doesn't write there: it says so, and that repo adds the check to its own hook.
-Merge commits pass. The hook is self-contained (it reads `.claude/build.json` itself), so it keeps working when the
-plugin moves or updates; the session-start hook refreshes it when the plugin's version changes.
+`core.hooksPath`) as two files: `commit-msg`, a POSIX `sh` shim stamped `# astra-build commit-msg v<version>`, and
+`astra-build-commit-msg.cjs`, a copy of `scripts/commit-msg.cjs` that the shim runs with `node`. (The `.cjs` file
+is CommonJS so Node runs it the same way wherever it's copied.) An existing `commit-msg` that isn't ours is renamed
+`commit-msg.pre-astra-build` and still runs first; if it fails, the commit stops there. When `core.hooksPath`
+points inside the work tree (a committed hooks folder), the installer doesn't write there: it says so, and that repo
+adds the check to its own hook. Merge commits pass. The copied check is self-contained (it reads
+`.claude/build.json` itself and imports nothing from the plugin), so it keeps working when the plugin moves or
+updates; the session-start hook refreshes both files when the plugin's version changes.
 
 ## Limits
 
