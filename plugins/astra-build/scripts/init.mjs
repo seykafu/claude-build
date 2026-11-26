@@ -28,7 +28,9 @@ function detect(land) {
       setup.push('yarn install --frozen-lockfile');
       runner = 'yarn';
     } else {
-      setup.push(exists('package-lock.json') ? 'npm ci --prefer-offline --no-audit --no-fund' : 'npm install');
+      setup.push(exists('package-lock.json')
+        ? 'npm ci --prefer-offline --no-audit --no-fund'
+        : 'npm install --no-package-lock --no-audit --no-fund');
       runner = 'npm run';
     }
     for (const key of ['typecheck', 'lint', 'test']) {

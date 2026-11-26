@@ -50,5 +50,7 @@ test('preview, preserve config and hook, replace with remote default on force', 
   assert.ok(fs.existsSync(hook));
   f.git('symbolic-ref', 'refs/remotes/origin/HEAD', 'refs/remotes/origin/stable');
   ok(f.init('--force'));
-  assert.deepEqual(f.read(), { ...DEFAULTS, worktree: { base: 'origin/stable', setup: ['npm install'] } });
+  const config = f.read();
+  assert.ok(config.worktree.setup[0].includes('--no-package-lock'));
+  assert.deepEqual(config, { ...DEFAULTS, worktree: { base: 'origin/stable', setup: ['npm install --no-package-lock --no-audit --no-fund'] } });
 });
