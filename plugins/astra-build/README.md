@@ -80,7 +80,7 @@ All live in `$ASTRA_BUILD/scripts` (the session-start hook exports `ASTRA_BUILD`
 | `init.mjs [--force] [--dry-run] [--land push\|pr]` | Writes `.claude/build.json` for the repo it runs in (see below), installs the commit hook, and reports the Codex CLI's version and login. |
 
 **What init detects.** `package.json` (npm, pnpm or yarn by lockfile): `worktree.setup` installs from the
-lockfile, and `checks` gets the `typecheck`, `lint` and `test` scripts that exist. `pyproject.toml` or
+lockfile (or `npm install --no-package-lock` without one, so a task never commits a stray lockfile), and `checks` gets the `typecheck`, `lint` and `test` scripts that exist. `pyproject.toml` or
 `requirements.txt`: `uv sync` with `uv.lock`, else `pip install -r requirements.txt`; `checks` gets `pytest` when
 tests exist. `Cargo.toml`: `cargo test`. `go.mod`: `go vet ./...` and `go test ./...`. `filter=lfs` in
 `.gitattributes`: `git lfs checkout` first. `worktree.base` is `origin/<default branch>`, or the current branch

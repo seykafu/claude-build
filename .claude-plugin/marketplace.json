@@ -5,13 +5,13 @@
   },
   "metadata": {
     "description": "Kasey's Claude Code workflow plugins.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "astra-build",
       "description": "Opus scopes, specs, checks and reviews; GPT-6.2 Astra writes all code through Codex, one worktree per task. A guard keeps Opus off code files and a commit hook requires a Codex-Job trailer.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Kasey"
       },
